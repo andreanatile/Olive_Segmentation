@@ -9,9 +9,14 @@ import colour
 
 # --- CONFIG ---
 N_PATCHES = 24
-INPUT_DIR = "/home/girobat/Olive/Corrected/rilievi del 24.09.24/not_detected"
-OUTPUT_JSON = "/home/girobat/Olive/Corrected/rilievi del 24.09.24/not_detected/colorchecker_rgb.json"
-OUTPUT_DIR = "/home/girobat/Olive/Corrected/rilievi del 24.09.24"
+# Dir with images needing manual swatch selection
+INPUT_DIR = "/home/girobat/Olive/Corrected/rilievo del 08.10.24/not_detected"
+
+# Json output path for saving swatches RGB values
+OUTPUT_JSON = "/home/girobat/Olive/Corrected/rilievo del 08.10.24/not_detected/colorchecker_rgb.json"
+
+# Dir containing corrected images
+OUTPUT_DIR = "/home/girobat/Olive/Corrected/rilievo del 08.10.24"
 DISPLAY_SCALE = 0.5
 
 json_data = {}
