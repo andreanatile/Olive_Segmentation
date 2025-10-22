@@ -9,9 +9,9 @@ import colour
 
 # --- CONFIG ---
 N_PATCHES = 24
-INPUT_DIR = "/home/girobat/Olive/Corrected/foto 11.09.24 olivo università/not_detected"
-OUTPUT_JSON = "/home/girobat/Olive/Corrected/foto 11.09.24 olivo università/not_detected/colorchecker_rgb.json"
-OUTPUT_DIR = "/home/girobat/Olive/Corrected/foto 11.09.24 olivo università"
+INPUT_DIR = "/home/girobat/Olive/Corrected/rilievi del 24.09.24/not_detected"
+OUTPUT_JSON = "/home/girobat/Olive/Corrected/rilievi del 24.09.24/not_detected/colorchecker_rgb.json"
+OUTPUT_DIR = "/home/girobat/Olive/Corrected/rilievi del 24.09.24"
 DISPLAY_SCALE = 0.5
 
 json_data = {}
@@ -70,13 +70,17 @@ def select_patches(image_path):
     print(f"\n🖼️ Processing: {os.path.basename(image_path)}")
     print(f"🖱️ Draw rectangles around each ColorChecker patch ({N_PATCHES} total).")
     print("Press 's' to save, 'q' to skip, or 'r' to reset.")
-
+    zoom = 1.0
+    zoom_step = 0.1
     while True:
         cv2.imshow("Select patches", img_display)
         key = cv2.waitKey(1) & 0xFF
-
+        if key == ord("+") or key == ord("="):
+            zoom = min(zoom + zoom_step, 3.0)
+        elif key == ord("-") or key == ord("_"):
+            zoom = max(zoom - zoom_step, 0.2)
         # Save
-        if key == ord("s") or len(patches) == N_PATCHES:
+        elif key == ord("s") or len(patches) == N_PATCHES:
             break
         # Skip
         elif key == ord("q"):
