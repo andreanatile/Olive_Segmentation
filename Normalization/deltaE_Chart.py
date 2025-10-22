@@ -15,6 +15,9 @@ with open(json_path, "r") as f:
 # Loop through all methods except "NoCorrection"
 for method in [m for m in data.keys() if m != "NoCorrection"]:
     categories = list(data[method].keys())
+    categories = [
+        c for c in categories if np.array(data[method][c]["corrected_image"]).any()
+    ]
     values = [np.mean(data[method][deg]["swatches"]) for deg in categories]
 
     # Add "NoCorrection" reference
