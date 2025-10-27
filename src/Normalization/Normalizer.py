@@ -82,52 +82,6 @@ class ColorNormalizer:
             print(f"❌ Error during colour correction: {e}")
             return None
 
-    def Normalization_sw(self, img, swatches):
-        """
-        Apply colour correction to an image using detected colour checker data.
-
-        Parameters
-        ----------
-        img : ndarray
-            Original input image (linear RGB, decoded with colour.cctf_decoding).
-        detected : list
-            Output of `detect_colour_checkers_segmentation(img, additional_data=True)`.
-            Should contain at least one detected colour checker.
-        method : str, optional
-            Colour correction method, one of:
-            ["Cheung 2004", "Finlayson 2015", "Vandermonde"].
-        degree : int, optional
-            Polynomial degree for the correction model.
-
-        Returns
-        -------
-        image_corrected : ndarray or None
-            The colour-corrected image, or None if correction failed.
-        """
-
-        try:
-            # --- Validate detection result ---
-            if swatches is None or len(swatches) == 0:
-                print("⚠️ No swatches data provided to Normalization().")
-                return None
-
-            # Each detected checker is a dictionary; get the first one
-
-            # --- Apply colour correction ---
-            image_corrected = colour.colour_correction(
-                img,
-                swatches,
-                REFERENCE_SWATCHES,  # from your global reference (e.g., ColorChecker24)
-                method=self.method,
-                degree=self.degree,
-            )
-
-            return image_corrected
-
-        except Exception as e:
-            print(f"❌ Error during colour correction: {e}")
-            return None
-
     def _copy_to_not_detected(self, src_path):
         """Copy failed image to the not_detected folder."""
         dest_path = os.path.join(self.not_detected_folder, os.path.basename(src_path))
