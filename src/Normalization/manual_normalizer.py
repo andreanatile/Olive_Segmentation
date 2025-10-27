@@ -7,7 +7,6 @@ import os
 import glob
 import json
 import colour
-from Normalizer import Normalization_sw
 
 
 class ManualSwatchesNormalizer:
