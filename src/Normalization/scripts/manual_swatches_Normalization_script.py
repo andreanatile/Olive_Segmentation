@@ -5,7 +5,7 @@ import numpy as np
 import os
 import glob
 import json
-from Normalization_script import Normalization_sw
+from Normalization.scripts.Normalizer import Normalization_sw
 import colour
 
 

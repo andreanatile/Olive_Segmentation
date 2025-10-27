@@ -3,7 +3,7 @@ import numpy as np
 import os
 import glob
 import json
-from Normalization_script import Normalization
+from Normalization.scripts.Normalizer import Normalization
 
 # --- CONFIG ---
 N_PATCHES = 24
